@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  db:
+    image: postgres:14.1-alpine
+    restart: always
+    container_name: animals-postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '5432:5432'
+    volumes: 
+      - ./store/docker_postgres_init.sql:/docker-entrypoint-initdb.d/docker_postgres_init.sql
+      - db:/var/lib/postgresql/data
+volumes:
+  db:
+    driver: local
