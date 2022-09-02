@@ -3,7 +3,7 @@ services:
   db:
     image: postgres:14.1-alpine
     restart: always
-    container_name: animals-postgres
+    container_name: animals-postgres-dockertest
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=postgres

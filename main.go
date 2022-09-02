@@ -9,14 +9,15 @@ import (
 
 func main() {
 	store.InitDatabase()
-	handler := controller.NewHandler(&store.Querier{})
-	run(handler)
+	router := setUpRouter()
+	router.Run(":8080")
 }
 
-func run(h *controller.Handler) {
+func setUpRouter() *gin.Engine {
+	h := controller.NewHandler(&store.Querier{})
 	router := gin.Default()
 	router.GET("/animal", h.GetAnimals)
 	router.POST("/animal", h.CreateAnimal)
 
-	router.Run("localhost:8080")
+	return router
 }
