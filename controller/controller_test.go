@@ -7,10 +7,10 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/alrobwilloliver/animal-service-gin/controller"
-	"github.com/alrobwilloliver/animal-service-gin/model"
+	"github.com/alrobwilloliver/animal-service-gin-dockertest/controller"
+	"github.com/alrobwilloliver/animal-service-gin-dockertest/model"
 	"github.com/gin-gonic/gin"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 type fakeQuerier struct {

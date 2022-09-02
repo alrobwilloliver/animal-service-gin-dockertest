@@ -4,15 +4,16 @@ import (
 	"log"
 
 	"github.com/alrobwilloliver/animal-service-gin/model"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 
-	_ "github.com/jinzhu/gorm/dialects/postgres" // postgres driver
+	"gorm.io/driver/postgres"
+	_ "gorm.io/driver/postgres" // postgres driver
 )
 
 var DB *gorm.DB
 
 func InitDatabase() {
-	db, err := gorm.Open("postgres", "host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable")
+	db, err := gorm.Open(postgres.Open("host=localhost port=5432 user=postgres dbname=postgres password=postgres sslmode=disable"), &gorm.Config{})
 	if err != nil {
 		log.Fatal(err)
 	}

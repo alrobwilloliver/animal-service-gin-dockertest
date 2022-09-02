@@ -2,7 +2,7 @@ package store
 
 import (
 	"github.com/alrobwilloliver/animal-service-gin-dockertest/model"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 type Queries interface {
