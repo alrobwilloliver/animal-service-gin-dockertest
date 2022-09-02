@@ -8,6 +8,7 @@ import (
 	"github.com/jinzhu/gorm"
 
 	"github.com/alrobwilloliver/animal-service-gin-dockertest/model"
+	"github.com/alrobwilloliver/animal-service-gin-dockertest/store"
 )
 
 func TestGetAnimals(t *testing.T) {
@@ -30,7 +31,7 @@ func TestGetAnimals(t *testing.T) {
 	// must escape special characters in regex
 	mock.ExpectQuery(`SELECT \* FROM \"animals\"`).WillReturnRows(rows)
 
-	querier := model.Querier{}
+	querier := store.Querier{}
 
 	animals, err := querier.GetAll(gormDb)
 	if err != nil {
@@ -70,10 +71,10 @@ func TestCreateAnimal(t *testing.T) {
 		WithArgs("dog").WillReturnRows(sqlmock.NewRows([]string{"id"}).AddRow("1"))
 	mock.ExpectCommit()
 
-	querier := model.Querier{}
+	querier := store.Querier{}
 
-	expectedAnimal := &model.Animal{Name: "dog"}
-	animal, err := querier.Create(gormDb, *expectedAnimal)
+	expectedAnimal := model.Animal{Name: "dog"}
+	animal, err := querier.Create(gormDb, expectedAnimal)
 	if err != nil {
 		t.Fatalf("failed to create animal: %s", err)
 	}

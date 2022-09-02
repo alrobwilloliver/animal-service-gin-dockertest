@@ -1,16 +1,16 @@
 package controller
 
 import (
-	"github.com/alrobwilloliver/animal-service-gin/model"
-	"github.com/alrobwilloliver/animal-service-gin/store"
+	"github.com/alrobwilloliver/animal-service-gin-dockertest/model"
+	"github.com/alrobwilloliver/animal-service-gin-dockertest/store"
 	"github.com/gin-gonic/gin"
 )
 
 type Handler struct {
-	querier model.Queries
+	querier store.Queries
 }
 
-func NewHandler(q model.Queries) *Handler {
+func NewHandler(q store.Queries) *Handler {
 	return &Handler{
 		querier: q,
 	}

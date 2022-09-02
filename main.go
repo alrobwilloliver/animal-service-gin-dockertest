@@ -3,20 +3,20 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 
-	"github.com/alrobwilloliver/animal-service-gin/controller"
-	"github.com/alrobwilloliver/animal-service-gin/model"
-	"github.com/alrobwilloliver/animal-service-gin/store"
+	"github.com/alrobwilloliver/animal-service-gin-dockertest/controller"
+	"github.com/alrobwilloliver/animal-service-gin-dockertest/store"
 )
 
 func main() {
-
 	store.InitDatabase()
+	handler := controller.NewHandler(&store.Querier{})
+	run(handler)
+}
 
-	handler := controller.NewHandler(&model.Querier{})
-
+func run(h *controller.Handler) {
 	router := gin.Default()
-	router.GET("/animal", handler.GetAnimals)
-	router.POST("/animal", handler.CreateAnimal)
+	router.GET("/animal", h.GetAnimals)
+	router.POST("/animal", h.CreateAnimal)
 
 	router.Run("localhost:8080")
 }
