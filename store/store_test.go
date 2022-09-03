@@ -142,7 +142,7 @@ func TestCreate(t *testing.T) {
 	}
 
 	gormDb.AutoMigrate(&animals)
-	// gormDb.Create(&animals)
+	gormDb.Create(&animals)
 
 	querier := Querier{}
 
