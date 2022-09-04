@@ -105,9 +105,6 @@ func TestGetAll(t *testing.T) {
 		},
 	}
 	gormDb.Create(&animals)
-	for i, animal := range animals {
-		animal.ID = i + 1
-	}
 
 	querier := Querier{}
 
