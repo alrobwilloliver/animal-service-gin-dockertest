@@ -19,7 +19,7 @@ func TestGetAll1(t *testing.T) {
 	defer db.Close()
 	dsn := "host=localhost port=5432 user=postgres database=postgres sslmode=disable"
 	gormDb, err := gorm.Open(postgres.Dialector{
-		&postgres.Config{
+		Config: &postgres.Config{
 			DriverName:           "postgres",
 			DSN:                  dsn,
 			PreferSimpleProtocol: true,
@@ -70,7 +70,7 @@ func TestCreate1(t *testing.T) {
 
 	dsn := "host=localhost port=5432 user=postgres database=postgres sslmode=disable"
 	gormDb, err := gorm.Open(postgres.Dialector{
-		&postgres.Config{
+		Config: &postgres.Config{
 			DriverName:           "postgres",
 			DSN:                  dsn,
 			PreferSimpleProtocol: true,
