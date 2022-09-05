@@ -51,7 +51,7 @@ func TestMain(m *testing.M) {
 		config.AutoRemove = true
 		config.RestartPolicy = docker.RestartPolicy{Name: "no"}
 		config.PortBindings = map[docker.Port][]docker.PortBinding{
-			"5432/tcp": {{HostPort: "5432"}, {HostPort: "5433"}},
+			"5432/tcp": {{HostPort: "5432"}},
 		}
 	})
 	if err != nil {
@@ -59,7 +59,6 @@ func TestMain(m *testing.M) {
 	}
 
 	hostAndPort := resource.GetHostPort("5432/tcp")
-	// port = resource.GetPort("5432/tcp")
 	databaseUrl := fmt.Sprintf("postgres://postgres:secret@%s/postgres?sslmode=disable", hostAndPort)
 
 	log.Println("Connecting to database on url: ", databaseUrl)
