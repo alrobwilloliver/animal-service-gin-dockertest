@@ -112,19 +112,19 @@ func TestGetAll(t *testing.T) {
 		t.Fatalf("failed to get animals: %s", err)
 	}
 	if len(createdAnimal) != 2 {
-		t.Fatalf("expected 1 animal, got %d", len(animals))
+		t.Fatalf("expected 2 animals, got %d", len(createdAnimal))
 	}
 	if (createdAnimal)[0].ID != 1 {
-		t.Fatalf("expected id %d, got %d", 1, (animals)[0].ID)
+		t.Fatalf("expected id %d, got %d", 1, (createdAnimal)[0].ID)
 	}
 	if (createdAnimal)[0].Name != "dog" {
-		t.Fatalf("expected make %s, got %s", "dog", (animals)[0].Name)
+		t.Fatalf("expected make %s, got %s", "dog", (createdAnimal)[0].Name)
 	}
 	if (createdAnimal)[1].ID != 2 {
-		t.Fatalf("expected id %d, got %d", 2, (animals)[1].ID)
+		t.Fatalf("expected id %d, got %d", 2, (createdAnimal)[1].ID)
 	}
 	if (createdAnimal)[1].Name != "cat" {
-		t.Fatalf("expected make %s, got %s", "cat", (animals)[1].Name)
+		t.Fatalf("expected make %s, got %s", "cat", (createdAnimal)[1].Name)
 	}
 
 	gormDb.Migrator().DropTable(&model.Animal{})
