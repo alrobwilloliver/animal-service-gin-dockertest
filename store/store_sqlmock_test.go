@@ -11,7 +11,7 @@ import (
 	"github.com/alrobwilloliver/animal-service-gin-dockertest/model"
 )
 
-func TestGetAll1(t *testing.T) {
+func TestGetAll_sqlmock(t *testing.T) {
 	db, mock, err := sqlmock.New()
 	if err != nil {
 		t.Fatalf("an error '%s' was not expected when opening a stub database connection", err)
@@ -61,7 +61,7 @@ func TestGetAll1(t *testing.T) {
 	}
 }
 
-func TestCreate1(t *testing.T) {
+func TestCreate_sqlmock(t *testing.T) {
 	db, mock, err := sqlmock.New()
 	if err != nil {
 		t.Fatalf("an error '%s' was not expected when opening a stub database connection", err)
